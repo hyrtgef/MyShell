@@ -1,7 +1,4 @@
 build/
-build/
-data/tasks.csv
-data/tasks.json
 *.o
 *.exe
 *.out
