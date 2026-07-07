@@ -133,8 +133,16 @@ void Shell::executeSingleCommand(const Command &cmd)
     }
     else if (pid > 0)
     {
-        int status;
-        waitpid(pid, &status, 0);
+        if (cmd.background)
+        {
+            // ✅ Фоновый режим — НЕ ждём!
+            std::cout << "[PID: " << pid << "] Запущен в фоне" << std::endl;
+        }
+        else
+        {
+            int status;
+            waitpid(pid, &status, 0);
+        }
     }
     else
     {
